@@ -5,20 +5,15 @@ import { CoursesService } from "./services/courses.service";
     selector: 'courses',
     template: `<h2>Courses</h2>
                <h3>{{ title }}</h3>
-               <ul>
-                <li *ngFor="let course of courses">
-                    {{ course }}
-                </li>
-               </ul>`
+               <img [src]="imageUrl" alt="nature image">`
 })
 export class CoursesComponent {
 
     title = "List of courses";
     courses: string[] | undefined = undefined;
+    imageUrl = "https://thumbs.dreamstime.com/b/panorama-de-for%C3%AAt-avec-des-rayons-de-lumi%C3%A8re-du-soleil-53826213.jpg";
 
-    constructor(private coursesService: CoursesService) {
-        this.getCourses();
-    }
+    constructor(private coursesService: CoursesService) {}
 
     getTitle() {
         return this.title;
