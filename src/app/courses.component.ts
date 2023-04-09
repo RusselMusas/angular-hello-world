@@ -5,13 +5,14 @@ import { CoursesService } from "./services/courses.service";
     selector: 'courses',
     template: `<h2>Courses</h2>
                <h3>{{ title }}</h3>
-               <button class="btn btn-primary" [class.active]="isActive">Submit</button>`
+               <button [style.backgroundColor]="isActive ? 'green' : 'white'">Save</button>`
 })
 export class CoursesComponent {
 
     title = "List of courses";
     courses: string[] | undefined = undefined;
     isActive = true;
+    // List of DOM objects styles properties: https://www.w3schools.com/jsref/dom_obj_style.asp
 
     constructor(private coursesService: CoursesService) {}
 
