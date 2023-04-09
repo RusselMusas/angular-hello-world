@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { CoursesService } from "./courses.service";
+import { CoursesService } from "./services/courses.service";
 
 @Component({
     selector: 'courses',
@@ -13,12 +13,12 @@ import { CoursesService } from "./courses.service";
 })
 export class CoursesComponent {
 
+    title = "List of courses";
+    courses: string[] | undefined = undefined;
+
     constructor(private coursesService: CoursesService) {
         this.getCourses();
     }
-    
-    title = "List of courses";
-    courses: string[] | undefined = undefined;
 
     getTitle() {
         return this.title;
