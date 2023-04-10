@@ -5,16 +5,19 @@ import { CoursesService } from "./services/courses.service";
     selector: 'courses',
     template: `<h2>Courses</h2>
                <h3>{{ title }}</h3>
-               <button [style.backgroundColor]="isActive ? 'green' : 'white'">Save</button>`
+               <button (click)="onSave($event)">Save</button>`
 })
 export class CoursesComponent {
 
     title = "List of courses";
     courses: string[] | undefined = undefined;
-    isActive = true;
-    // List of DOM objects styles properties: https://www.w3schools.com/jsref/dom_obj_style.asp
 
     constructor(private coursesService: CoursesService) {}
+
+    onSave($event: Event) {
+        $event.stopPropagation(); // stop event bubbling
+        console.log("Button was clicked: ", $event);
+    }
 
     getTitle() {
         return this.title;
