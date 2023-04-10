@@ -5,7 +5,7 @@ import { CoursesService } from "./services/courses.service";
     selector: 'courses',
     template: `<h2>Courses</h2>
                <h3>{{ title }}</h3>
-               <button (click)="onSave($event)">Save</button>`
+               <input (keyup.enter)="onKeyup($event)">`
 })
 export class CoursesComponent {
 
@@ -13,6 +13,12 @@ export class CoursesComponent {
     courses: string[] | undefined = undefined;
 
     constructor(private coursesService: CoursesService) {}
+
+    onKeyup(event: any) {
+        event.stopPropagation();
+        // if(event.keyCode === 13) console.log("Enter was pressed")
+        console.log("ENTER was pressed");
+    }
 
     onSave($event: Event) {
         $event.stopPropagation(); // stop event bubbling
