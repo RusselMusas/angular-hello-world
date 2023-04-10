@@ -5,17 +5,18 @@ import { CoursesService } from "./services/courses.service";
     selector: 'courses',
     template: `<h2>Courses</h2>
                <h3>{{ title }}</h3>
-               <input #email (keyup.enter)="onKeyup(email.value)">`
+               <input [(ngModel)]="email" (keyup.enter)="onKeyup()">`
 })
 export class CoursesComponent {
 
     title = "List of courses";
     courses: string[] | undefined = undefined;
+    email: string | null = "me@domain.com";
 
     constructor(private coursesService: CoursesService) {}
 
-    onKeyup(email: string) {
-        console.log(email);
+    onKeyup() {
+        console.log(this.email);
     }
 
     onSave($event: Event) {
