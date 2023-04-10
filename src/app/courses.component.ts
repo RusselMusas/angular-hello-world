@@ -5,7 +5,7 @@ import { CoursesService } from "./services/courses.service";
     selector: 'courses',
     template: `<h2>Courses</h2>
                <h3>{{ title }}</h3>
-               <input (keyup.enter)="onKeyup($event)">`
+               <input #email (keyup.enter)="onKeyup(email.value)">`
 })
 export class CoursesComponent {
 
@@ -14,10 +14,8 @@ export class CoursesComponent {
 
     constructor(private coursesService: CoursesService) {}
 
-    onKeyup(event: any) {
-        event.stopPropagation();
-        // if(event.keyCode === 13) console.log("Enter was pressed")
-        console.log("ENTER was pressed");
+    onKeyup(email: string) {
+        console.log(email);
     }
 
     onSave($event: Event) {
